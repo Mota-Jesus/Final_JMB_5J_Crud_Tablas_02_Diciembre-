@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+
+<div class="row">
+    <div class="col-sm-12-col-md-4 col-lg-4 col-xl-4">
+        <h1>Registrar Detalle de Orden</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrarDetalles/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtcodigo" name="txtcodigo" class="form-control" maxlength="6" placeholder="Código Detalle" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="number" id="numorden" name="numorden" class="form-control" placeholder="ID Orden" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="number" id="numproducto" name="numproducto" class="form-control" placeholder="ID Producto" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="number" id="numcantidad" name="numcantidad" class="form-control" placeholder="Cantidad" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="number" step="0.01" id="numprecio_unitario" name="numprecio_unitario" class="form-control" placeholder="Precio Unitario" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="number" step="0.01" id="numsubtotal" name="numsubtotal" class="form-control" placeholder="Subtotal" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="number" step="0.01" id="numdescuento" name="numdescuento" class="form-control" placeholder="Descuento" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12-col-md-8 col-lg-8 col-xl-6">
+        <h1>Listado de Detalles de Orden</h1>
+        <img class="w-50"src="{% static 'img/detalles.png' %}" alt="detalles-d-ordenes" width="700" height="400">
+        <br>
+        <br>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">ID Orden</th>
+                        <th scope="col">ID Producto</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio Unitario</th>
+                        <th scope="col">Subtotal</th>
+                        <th scope="col">Descuento</th>
+                        <th colspan="2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for d in misdetalles %}
+                        <tr>
+                            <td>{{ d.id_detalles }}</td>
+                            <td>{{ d.id_orden }}</td>
+                            <td>{{ d.id_producto }}</td>
+                            <td>{{ d.cantidad }}</td>
+                            <td>{{ d.precio_unitario }}</td>
+                            <td>{{ d.subtotal }}</td>
+                            <td>{{ d.descuento }}</td>
+                            <td><a href="seleccionarDetalles/{{ d.id_detalles }}" class="btn btn-info">Editar</a></td>
+                            <td><a href="borrarDetalles/{{ d.id_detalles }}" class="btn btn-danger">Borrar</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
