@@ -2,7 +2,7 @@
 Café Gourmet CRUD Tablas en Django
 
 ## Index:
-- ![image](https://github.com/user-attachments/assets/07b59513-e7a4-4c33-ad65-feed88f6f276)
+- ![image](https://github.com/user-attachments/assets/c36f1302-692f-4fcc-9a10-60299257405a)
 ## Aplicacion Clientes:
 - ![image](https://github.com/user-attachments/assets/2be0bf4a-9760-4b47-8266-95ebe0b9f6b4)
 ## Editar Clientes:
