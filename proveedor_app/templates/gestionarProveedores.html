@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+
+<div class="row">
+    <div class="col-sm-12-col-md-4 col-lg-4 col-xl-4">
+        <h1>Registrar Proveedor</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrarProveedores/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtcodigo" name="txtcodigo" class="form-control" maxlength="6" placeholder="Código Proveedor" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control" maxlength="100" placeholder="Nombre Proveedor" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtcontacto" name="txtcontacto" class="form-control" maxlength="50" placeholder="Contacto Proveedor" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="txttelefono" name="txttelefono" class="form-control" maxlength="10" placeholder="Teléfono Proveedor" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="email" id="txtemail" name="txtemail" class="form-control" maxlength="200" placeholder="Email Proveedor" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <textarea id="txtdireccion" name="txtdireccion" class="form-control" placeholder="Dirección Proveedor" required></textarea>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="date" id="datefecha_reg" name="datefecha_reg" class="form-control" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12-col-md-8 col-lg-8 col-xl-6">
+        <h1>Listado de Proveedores</h1>
+        <img class="w-50"src="{% static 'img/proveedor.png' %}" alt="Proovedores" width="700" height="400">
+        <br>
+        <br>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Contacto</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Fecha Registro</th>
+                        <th colspan="2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in misproveedores %}
+                        <tr>
+                            <td>{{ p.id_proveedor }}</td>
+                            <td>{{ p.nombre }}</td>
+                            <td>{{ p.contacto }}</td>
+                            <td>{{ p.telefono }}</td>
+                            <td>{{ p.email }}</td>
+                            <td>{{ p.direccion }}</td>
+                            <td>{{ p.fecha_registro }}</td>
+                            <td><a href="seleccionarProveedores/{{ p.id_proveedor }}" class="btn btn-info">Editar</a></td>
+                            <td><a href="borrarProveedores/{{ p.id_proveedor }}" class="btn btn-danger">Borrar</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

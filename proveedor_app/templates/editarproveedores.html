@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h1>Editar Proveedor</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarProveedores/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtcodigo" name="txtcodigo" class="form-control" maxlength="6" value="{{ misproveedores.id_proveedor }}" readonly required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control" maxlength="100" value="{{ misproveedores.nombre }}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtcontacto" name="txtcontacto" class="form-control" maxlength="50" value="{{ misproveedores.contacto }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="txttelefono" name="txttelefono" class="form-control" maxlength="10" value="{{ misproveedores.telefono }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="email" id="txtemail" name="txtemail" class="form-control" maxlength="200" value="{{ misproveedores.email }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <textarea id="txtdireccion" name="txtdireccion" class="form-control" required>{{ misproveedores.direccion }}</textarea>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="date" id="datefecha_reg" name="datefecha_reg" class="form-control" value="{{ misproveedores.fecha_registro|date:'Y-m-d' }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
