@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h1>Editar Ordenes</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarOrdenes/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtidorden" name="txtidorden" class="form-control" value="{{ misordenes.id_orden }}" readonly required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtidcliente" name="txtidcliente" class="form-control" value="{{ misordenes.id_cliente }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="txtidempleado" name="txtidempleado" class="form-control" value="{{ misordenes.id_empleado }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="txtidproducto" name="txtidproducto" class="form-control" value="{{ misordenes.id_producto }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="number" id="numcantidad" name="numcantidad" class="form-control" value="{{ misordenes.cantidad }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="date" id="datefechaorden" name="datefechaorden" class="form-control" value="{{ misordenes.fecha_orden|date:'Y-m-d' }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="number" step="0.01" id="numtotal" name="numtotal" class="form-control" value="{{ misordenes.total }}" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
