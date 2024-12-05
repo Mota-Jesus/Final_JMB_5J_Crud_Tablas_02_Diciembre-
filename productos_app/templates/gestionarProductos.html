@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{%load static%}
+{% block cuerpo %}
+
+<div class="row">
+    <div class="col-md-4">
+        <h1>Registrar Productos</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrarProductos/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="number" id="txtcodigo" name="txtcodigo" class="form-control" placeholder="Código Producto" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control" placeholder="Nombre Producto" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <textarea id="txtdescripcion" name="txtdescripcion" class="form-control" placeholder="Descripción Producto" required></textarea>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="number" id="numprecio" name="numprecio" class="form-control" step="0.01" placeholder="Precio Producto" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="number" id="numstock" name="numstock" class="form-control" placeholder="Stock Producto" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="txtcategoria" name="txtcategoria" class="form-control" placeholder="Categoría Producto" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="date" id="datefecha_a" name="datefecha_a" class="form-control" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="number" id="txtproveedor" name="txtproveedor" class="form-control" placeholder="ID Proveedor" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <h1>Listado de Productos</h1>
+        <img class="w-50"src="{% static 'img/producto.jpg' %}" alt="Producto" width="700" height="400">
+        <br>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Categoría</th>
+                    <th>Fecha Añadido</th>
+                    <th>ID Proveedor</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in misproductos %}
+                    <tr>
+                        <td>{{ p.id_productos }}</td>
+                        <td>{{ p.nombre }}</td>
+                        <td>{{ p.descripcion }}</td>
+                        <td>{{ p.precio }}</td>
+                        <td>{{ p.stock }}</td>
+                        <td>{{ p.categoria }}</td>
+                        <td>{{ p.fecha_añadido }}</td>
+                        <td>{{ p.id_proveedor }}</td>
+                        <td>
+                            <a href="seleccionarProductos/{{ p.id_productos }}" class="btn btn-info">Editar</a>
+                            <a href="borrarProductos/{{ p.id_productos }}" class="btn btn-danger">Borrar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
