@@ -24,9 +24,9 @@ Café Gourmet CRUD Tablas en Django
 ## Editar Proveedores:
 - ![image](https://github.com/user-attachments/assets/3fd2f208-1315-417b-9c07-ada356ec075c)
 ## Aplicacion Inventario:
-- ![image](https://github.com/user-attachments/assets/4be551b3-5fb4-419b-9781-fc8845505030)
+- ![image](https://github.com/user-attachments/assets/90082f40-763e-473e-8908-db54a2cc46b6)
 ## Editar Inventario:
-- ![image](https://github.com/user-attachments/assets/f7054c48-29d9-4d67-9513-c76ff1305789)
+- ![image](https://github.com/user-attachments/assets/e202711e-3e4e-4506-880d-0fc259897c8b)
 ## Aplicacion Empleados:
 - ![image](https://github.com/user-attachments/assets/ffb1683a-ec12-4719-8c5d-aaf585843e12)
 ## Editar Empleados:
